@@ -3,6 +3,8 @@ import { useRegisterSW } from 'virtual:pwa-register/vue'
 
 import App from '@/App.vue'
 import useComponent from '@/composables/useComponent'
+import usePrimevue from '@/composables/usePrimevue'
+import useI18n from '@/composables/useI18n'
 
 import '@/assets/tailwind.css'
 import 'primevue/resources/themes/lara-light-teal/theme.css'
@@ -18,5 +20,7 @@ const app = createApp(App)
 
 /* Register all components */
 app.use(useComponent)
+app.use(usePrimevue)
+app.use(useI18n)
 
 app.mount('#app')
