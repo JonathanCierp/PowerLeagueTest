@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.3",
+    "@tailwindcss/line-clamp": "^0.4.0",
     "@types/node": "^16.11.36",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",

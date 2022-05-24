@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Brown';
+  font-weight: 400;
+  font-style: normal;
+  src: url(./font/lineto-brown-regular-f0e1ba11c4.eot), url(./font/lineto-brown-regular-f0e1ba11c4.eot?#iefix) format('embedded-opentype'),
+    url(./font/lineto-brown-regular-f0e1ba11c4.woff) format('woff');
+}
+@font-face {
+  font-family: 'Brown';
+  font-weight: 700;
+  font-style: normal;
+  src: url(./font/lineto-brown-bold-28dff5835f.eot), url(./font/lineto-brown-bold-28dff5835f.eot?#iefix) format('embedded-opentype'),
+    url(./font/lineto-brown-bold-28dff5835f.woff) format('woff');
+}
