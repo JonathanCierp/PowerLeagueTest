@@ -2,12 +2,13 @@ import { App } from 'vue'
 import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 
+import Card from 'primevue/card'
 import Dropdown from 'primevue/dropdown'
 import Tooltip from 'primevue/tooltip'
 
 // import useI18n from '@/composables/useI18n'
 
-const components = [Dropdown]
+const components = [Card, Dropdown]
 
 export default (app: App) => {
   for (const component of components) {

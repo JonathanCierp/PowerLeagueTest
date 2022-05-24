@@ -6,7 +6,7 @@
       v-model="inputValue"
       class="w-full"
       :class="[!input.isValid ? 'p-invalid' : '']"
-      placeholder="..."
+      :placeholder="placeholder"
       :options="options"
       :input-id="id"
       @change="onChangeValue"
@@ -31,8 +31,9 @@
 
   interface BaseFormSelectProps {
     modelValue: null
-    label: string
-    id: string
+    label?: string
+    id?: string
+    placeholder?: string
     options: Array<(...args: any[]) => string>
     rules?: Array<(...args: any[]) => string>
   }
@@ -41,6 +42,7 @@
     modelValue: null,
     label: '',
     id: '',
+    placeholder: '...',
     options: () => [],
     rules: () => [],
   })
