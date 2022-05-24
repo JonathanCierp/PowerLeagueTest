@@ -2,13 +2,14 @@ import { App } from 'vue'
 import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 
+import Calendar from 'primevue/calendar'
 import Card from 'primevue/card'
 import Dropdown from 'primevue/dropdown'
 import Tooltip from 'primevue/tooltip'
 
-// import useI18n from '@/composables/useI18n'
+import useI18n from '@/composables/useI18n'
 
-const components = [Card, Dropdown]
+const components = [Calendar, Card, Dropdown]
 
 export default (app: App) => {
   for (const component of components) {
@@ -19,10 +20,10 @@ export default (app: App) => {
     locale: {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      // ...useI18n.global.messages[useI18n.global.locale].message.components.base.BaseCalendar.BaseCalendar,
+      ...useI18n.global.messages[useI18n.global.locale].message.components.base.BaseForm.BaseFormDatepicker.BaseFormDatepicker,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      // ...useI18n.global.messages[useI18n.global.locale].message.components.base.BaseForm.BaseFormFileUpload.BaseFormFileUpload,
+      ...useI18n.global.messages[useI18n.global.locale].message.components.base.BaseForm.BaseFormFileUpload.BaseFormFileUpload,
     },
   })
   app.use(ToastService)
