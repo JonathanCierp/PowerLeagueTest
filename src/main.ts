@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
 
 import App from '@/App.vue'
@@ -18,6 +19,7 @@ useRegisterSW({})
 /* Creating a new Vue instance. */
 const app = createApp(App)
 
+app.use(createPinia())
 /* Register all components */
 app.use(useComponent)
 app.use(usePrimevue)
