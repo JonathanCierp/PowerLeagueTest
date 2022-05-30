@@ -6,4 +6,12 @@ interface Field {
   id?: number
 }
 
-export { SportCenter, Field }
+interface SessionPayload {
+  sessionTypeId: number
+  fieldId: number
+  localActualStartedAtAfter: string
+  localActualStartedAtBefore: string
+  localActualStartedAtOrder: string
+}
+
+export { SportCenter, Field, SessionPayload }

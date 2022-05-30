@@ -2,6 +2,7 @@ import { App } from 'vue'
 import PrimeVue from 'primevue/config'
 import ToastService from 'primevue/toastservice'
 
+import Button from 'primevue/button'
 import Calendar from 'primevue/calendar'
 import Card from 'primevue/card'
 import Dropdown from 'primevue/dropdown'
@@ -9,7 +10,7 @@ import Tooltip from 'primevue/tooltip'
 
 import useI18n from '@/composables/useI18n'
 
-const components = [Calendar, Card, Dropdown]
+const components = [Button, Calendar, Card, Dropdown]
 
 export default (app: App) => {
   for (const component of components) {

@@ -17,10 +17,22 @@ export default createI18n({
         dateStyle: 'short',
         timeStyle: 'short',
       },
+      shortDate: {
+        dateStyle: 'short',
+      },
+      shortTime: {
+        timeStyle: 'short',
+      },
     },
     en: {
       short: {
         dateStyle: 'short',
+        timeStyle: 'short',
+      },
+      shortDate: {
+        dateStyle: 'short',
+      },
+      shortTime: {
         timeStyle: 'short',
       },
     },
