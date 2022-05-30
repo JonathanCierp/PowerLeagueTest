@@ -1338,17 +1338,17 @@ export default defineStore({
         // ...
       }
     },
-    async getSessions(payload: SessionPayload) {
-      try {
-        const { data } = await axiosInstance().get(`/fields?sportCenter.id=${sportCenterId}`)
+    // async getSessions(payload: SessionPayload) {
+    //   try {
+    //     const { data } = await axiosInstance().get(`/fields?sportCenter.id=${sportCenterId}`)
 
-        this.$patch({
-          sportCenters: data['hydra:member'],
-        })
-      } catch (e: any) {
-        // ...
-      }
-    },
+    //     this.$patch({
+    //       sportCenters: data['hydra:member'],
+    //     })
+    //   } catch (e: any) {
+    //     // ...
+    //   }
+    // },
     async getSessionBySessionId(sessionId: string | string[]) {
       try {
         const { data } = await axiosInstance().get(`/ngtv_sessions/${sessionId}`)
