@@ -14,4 +14,8 @@ interface SessionPayload {
   localActualStartedAtOrder: string
 }
 
-export { SportCenter, Field, SessionPayload }
+interface Session {
+  id?: number
+}
+
+export { SportCenter, Field, SessionPayload, Session }

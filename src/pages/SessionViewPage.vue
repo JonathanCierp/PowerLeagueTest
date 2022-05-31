@@ -49,17 +49,23 @@
           <div class="flex items-center gap-4">
             <h4 class="text-lg font-bold">Cameras :</h4>
             <div
-              class="cursor-pointer select-none transition-colors duration-200 flex items-center justify-center text-lg font-bold w-12 h-12 bg-green-500 hover:bg-green-600"
+              class="cursor-pointer select-none transition-colors duration-200 flex items-center justify-center text-lg font-bold w-12 h-12 hover:bg-green-600 hover:text-white"
+              :class="[currentCamera === 0 ? 'text-white bg-green-500' : '']"
+              @click="currentCamera = 0"
             >
               1
             </div>
             <div
-              class="cursor-pointer select-none transition-colors duration-200 flex items-center justify-center text-lg font-bold w-12 h-12 hover:bg-green-600"
+              class="cursor-pointer select-none transition-colors duration-200 flex items-center justify-center text-lg font-bold w-12 h-12 hover:bg-green-600 hover:text-white"
+              :class="[currentCamera === 1 ? 'text-white bg-green-500' : '']"
+              @click="currentCamera = 1"
             >
               2
             </div>
             <div
-              class="cursor-pointer select-none transition-colors duration-200 flex items-center justify-center text-lg font-bold w-12 h-12 hover:bg-green-600"
+              class="cursor-pointer select-none transition-colors duration-200 flex items-center justify-center text-lg font-bold w-12 h-12 hover:bg-green-600 hover:text-white"
+              :class="[currentCamera === 2 ? 'text-white bg-green-500' : '']"
+              @click="currentCamera = 2"
             >
               3
             </div>
@@ -67,7 +73,7 @@
         </div>
       </template>
     </BaseCard>
-    <BaseCard width="400px">
+    <BaseCard class="self-start" width="400px">
       <template #content> daz </template>
     </BaseCard>
   </main>
@@ -82,6 +88,7 @@
   const appStore = useAppStore()
 
   const isLoaded = ref<boolean>(false)
+  const currentCamera = ref<number>(0)
 
   onMounted(async () => {
     await appStore.getSessionBySessionId(route.params.id)

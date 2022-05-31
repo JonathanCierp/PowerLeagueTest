@@ -1,5 +1,6 @@
 <template>
   <main v-if="isLoaded" class="flex flex-col items-center justify-center p-4 gap-4">
+    <pre>{{ payload }}</pre>
     <BaseCard width="1200px">
       <template #content>
         <div class="flex items-center gap-4">
@@ -9,6 +10,7 @@
             label="Centre sportif"
             option-label="name"
             data-key="id"
+            filter
             @change="onChangeSportCenter"
           />
           <BaseFormSelect
@@ -17,6 +19,7 @@
             label="Terrain"
             option-label="name"
             data-key="id"
+            filter
             @change="onChangeFields"
           />
           <BaseFormDatepicker v-model="dateValue" autocomplete="off" :manual-input="false" label="Date" date-format="dd/mm/yy" />
@@ -67,7 +70,7 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted, ref } from 'vue'
+  import { computed, onMounted, reactive, ref } from 'vue'
   import useAppStore from '@/app.store'
   import { Field, SportCenter } from '@/types'
 
@@ -75,12 +78,17 @@
 
   const isLoaded = ref<boolean>(false)
   const dateValue = ref(new Date())
-  const sportCenterValue = ref<SportCenter>({})
-  const fieldValue = ref<Field>({})
+
+  const sportCenterValue: SportCenter = reactive({})
+  const fieldValue: Field = reactive({})
+
+  const payload = computed(() => ({
+    'ngtvSessionType.id': 1,
+  }))
 
   const onChangeSportCenter = async ({ value }: any = {}) => {
     await appStore.getFields(value.id)
-    fieldValue.value = appStore.fields[0]
+    Object.assign(fieldValue, appStore.fields[0])
   }
 
   const onChangeFields = async ({ value }: any = {}) => {
@@ -89,8 +97,9 @@
 
   onMounted(async () => {
     await appStore.getSportCenters()
-    sportCenterValue.value = appStore.sportCenters[0]
-    await onChangeSportCenter({ value: appStore.fields[0] })
+    Object.assign(sportCenterValue, appStore.sportCenters[0])
+    await onChangeSportCenter({ value: sportCenterValue })
+
     isLoaded.value = true
   })
 </script>

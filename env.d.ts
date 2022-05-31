@@ -9,7 +9,7 @@ declare module '*.vue' {
 
 interface ImportMetaEnv {
   VITE_API_URL: string
-  VITE_NGTV_ACESS_TOKEN: string
+  VITE_NGTV_ACCESS_TOKEN: string
 }
 
 interface ImportMeta {
