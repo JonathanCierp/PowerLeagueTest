@@ -4,6 +4,7 @@ interface SportCenter {
 
 interface Field {
   id?: number
+  name?: string
 }
 
 interface SessionPayload {
@@ -16,6 +17,25 @@ interface SessionPayload {
 
 interface Session {
   id?: number
+  name: string
+  localActualStartedAt: Date | number
+  ngtvSessionHomeTeam: {
+    color: string
+    fullScore: number[]
+  }
+  ngtvSessionAwayTeam: {
+    color: string
+    fullScore: number[]
+  }
+  field: Field
 }
 
-export { SportCenter, Field, SessionPayload, Session }
+interface FilterSessionPayload {
+  'ngtvSessionType.id': number
+  'field.id': number | undefined
+  'localActualStartedAt[after]': Date | string
+  'localActualStartedAt[before]': Date | string
+  'order[localActualStartedAt]': string
+}
+
+export { SportCenter, Field, SessionPayload, Session, FilterSessionPayload }

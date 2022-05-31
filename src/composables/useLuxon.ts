@@ -16,7 +16,7 @@ export default () => {
    * @param {DateTimeUnit} [of=day] - DateTimeUnit = 'day'
    * @returns A string in ISO format
    */
-  const dateStartOf = (date: Date | string, of: DateTimeUnit = 'day'): string | null => {
+  const dateStartOf = (date: Date | string, of: DateTimeUnit = 'day'): string => {
     reloadLuxonLocale()
     const dateToIso = typeof date === 'object' ? date?.toISOString() : date
 
@@ -29,15 +29,18 @@ export default () => {
    * @param {DateTimeUnit} [of=day] - DateTimeUnit = 'day'
    * @returns A string in ISO format
    */
-  const dateEndOf = (date: Date | string, of: DateTimeUnit = 'day'): string | null => {
+  const dateEndOf = (date: Date | string, of: DateTimeUnit = 'day'): string => {
     reloadLuxonLocale()
     const dateToIso = typeof date === 'object' ? date?.toISOString() : date
 
-    return DateTime.fromISO(dateToIso).setLocale(defaultLocale).endOf(of).toISO()
+    return DateTime.fromISO(dateToIso).setLocale(defaultLocale).endOf(of).toISO() || ''
   }
+
+  const formatDate = (date: string, format: string) => DateTime.fromISO(date).toFormat(format)
 
   return {
     dateStartOf,
     dateEndOf,
+    formatDate,
   }
 }

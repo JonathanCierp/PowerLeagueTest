@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import useAxios from '@/composables/useAxios'
-import { Field, Session, SportCenter } from '@/types'
+import { Field, FilterSessionPayload, Session, SportCenter } from '@/types'
 
 interface AppStore {
   sportCenters: SportCenter[]
@@ -44,17 +44,20 @@ export default defineStore({
         // ...
       }
     },
-    // async getSessions(payload: SessionPayload) {
-    //   try {
-    //     const { data } = await axiosInstance().get(`/fields?sportCenter.id=${sportCenterId}`)
+    async getSessions(payload: FilterSessionPayload) {
+      try {
+        const payloadParams = Object.entries(payload)
+          .map(([key, value]) => `${key}=${value}`)
+          .join('&')
+        const { data } = await axiosInstance().get(`/ngtv_sessions.jsonld?${payloadParams}`)
 
-    //     this.$patch({
-    //       sportCenters: data['hydra:member'],
-    //     })
-    //   } catch (e: any) {
-    //     // ...
-    //   }
-    // },
+        this.$patch({
+          sessions: data['hydra:member'],
+        })
+      } catch (e: any) {
+        // ...
+      }
+    },
     async getSessionBySessionId(sessionId: string | string[]) {
       try {
         const { data } = await axiosInstance().get(`/ngtv_sessions/${sessionId}`)
