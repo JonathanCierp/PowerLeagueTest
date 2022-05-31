@@ -62,6 +62,20 @@ export default {
           },
         },
       },
+      pages: {
+        HomePageSessionItem: {},
+      },
+    },
+    pages: {
+      HomePage: {
+        filters: {
+          sportCenter: 'Centre sportif',
+          field: 'Terrain',
+          date: 'Date',
+        },
+        title: '{n} Session | {n} Session | {n} Sessions',
+        empty: 'Pas de résultats',
+      },
     },
   },
 }

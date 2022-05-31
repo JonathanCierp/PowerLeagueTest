@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-3 p-4 items-center bg-green-100">
+  <div class="grid grid-cols-3 p-4 items-center bg-green-100 w-full">
     <div>
       <p class="font-bold">
         <span class="text-green-500">{{ session.name }}</span> - {{ session.field.name }}

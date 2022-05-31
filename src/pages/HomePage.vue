@@ -6,7 +6,7 @@
           <BaseFormSelect
             v-model="sportCenterValue"
             :options="appStore.sportCenters"
-            label="Centre sportif"
+            :label="$t('message.pages.HomePage.filters.sportCenter')"
             option-label="name"
             data-key="id"
             filter
@@ -15,7 +15,7 @@
           <BaseFormSelect
             v-model="fieldValue"
             :options="appStore.fields"
-            label="Terrain"
+            :label="$t('message.pages.HomePage.filters.field')"
             option-label="name"
             data-key="id"
             filter
@@ -25,7 +25,7 @@
             v-model="dateValue"
             autocomplete="off"
             :manual-input="false"
-            label="Date"
+            :label="$t('message.pages.HomePage.filters.date')"
             date-format="dd/mm/yy"
             @update:model-value="onLoadSession"
           />
@@ -34,10 +34,15 @@
     </BaseCard>
     <BaseCard width="1200px">
       <template #header>
-        <h3 class="p-4 text-center text-2xl font-bold">{{ appStore.sessions.length }} Sessions</h3>
+        <h3 class="p-4 text-center text-2xl font-bold">
+          {{ $tc('message.pages.HomePage.title', appStore.sessions.length) }}
+        </h3>
       </template>
       <template #content>
-        <div v-if="isLoaded" class="flex flex-col gap-4">
+        <div v-if="isLoaded" class="flex flex-col items-center gap-4">
+          <PInlineMessage v-if="!appStore.sessions.length" class="max-w-3xl w-full" severity="info" inline>
+            {{ $t('message.pages.HomePage.empty') }}
+          </PInlineMessage>
           <HomePageSessionItem v-for="session in appStore.sessions" :key="session.id" :session="session" />
         </div>
         <AppLoader v-else />
@@ -63,8 +68,8 @@
   const fieldValue = ref<Field>({})
 
   const payload = computed<FilterSessionPayload>(() => ({
-    'ngtvSessionType.id': 2,
-    'field.id': fieldValue.value.id,
+    'ngtvSessionType.id': 1, // 2,
+    'field.id': 304, //fieldValue.value.id,
     'localActualStartedAt[after]': formatDate(dateStartOf(dateValue.value), 'yyyy-MM-dd HH:mm:ss'),
     'localActualStartedAt[before]': formatDate(dateEndOf(dateValue.value), 'yyyy-MM-dd HH:mm:ss'),
     'order[localActualStartedAt]': 'asc',

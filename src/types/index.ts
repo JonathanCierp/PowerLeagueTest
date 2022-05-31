@@ -1,10 +1,12 @@
 interface SportCenter {
   id?: number
+  name?: string
 }
 
 interface Field {
   id?: number
   name?: string
+  sportCenter?: SportCenter
 }
 
 interface SessionPayload {
@@ -27,6 +29,7 @@ interface Session {
     color: string
     fullScore: number[]
   }
+  videoSources?: string[]
   field: Field
 }
 

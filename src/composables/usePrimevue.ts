@@ -6,11 +6,12 @@ import Button from 'primevue/button'
 import Calendar from 'primevue/calendar'
 import Card from 'primevue/card'
 import Dropdown from 'primevue/dropdown'
+import InlineMessage from 'primevue/inlinemessage'
 import Tooltip from 'primevue/tooltip'
 
 import useI18n from '@/composables/useI18n'
 
-const components = [Button, Calendar, Card, Dropdown]
+const components = [Button, Calendar, Card, Dropdown, InlineMessage]
 
 export default (app: App) => {
   for (const component of components) {

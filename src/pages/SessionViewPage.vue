@@ -14,7 +14,7 @@
               </p>
               <p>
                 <span class="font-bold">Terrain :</span>
-                {{ appStore.session.field.sportCenter.name }}
+                {{ appStore.session.field.sportCenter?.name }}
               </p>
             </div>
             <div>
@@ -43,7 +43,7 @@
               :secondary-color="appStore.session.ngtvSessionAwayTeam.color"
             />
           </div>
-          <video class="w-full" controls preload="none">
+          <video v-if="appStore.session.videoSources" class="w-full" controls preload="none">
             <source :src="appStore.session.videoSources[0]" />
           </video>
           <div class="flex items-center gap-4">
